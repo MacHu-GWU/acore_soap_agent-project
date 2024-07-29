@@ -58,7 +58,7 @@ class SoapRequestLoader:
             return cls.from_command(command_or_dict)
         elif isinstance(command_or_dict, dict):
             return cls.from_dict(command_or_dict)
-        else:
+        else:  # pragma: no cover
             raise TypeError(
                 f"command_or_dict must be str or dict, not {type(command_or_dict)}"
             )
@@ -87,7 +87,7 @@ class SoapRequestLoader:
             return [cls.from_dict(obj)]
         elif isinstance(obj, list):
             return cls.from_list(obj)
-        else:
+        else:  # pragma: no cover
             raise TypeError(f"obj must be str, dict or list, not {type(obj)}")
 
     @classmethod

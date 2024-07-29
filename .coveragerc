@@ -5,8 +5,8 @@ omit =
     acore_soap_agent/docs/*
     acore_soap_agent/tests/*
     acore_soap_agent/vendor/*
+    acore_soap_agent/cli/*
     acore_soap_agent/_version.py
-    acore_soap_agent/cli.py
     acore_soap_agent/paths.py
 
 [report]
