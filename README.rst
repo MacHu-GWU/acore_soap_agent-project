@@ -53,7 +53,22 @@ Welcome to ``acore_soap_agent`` Documentation
 .. image:: https://acore-soap-agent.readthedocs.io/en/latest/_static/acore_soap_agent-logo.png
     :target: https://acore-soap-agent.readthedocs.io/en/latest/
 
-Documentation for ``acore_soap_agent``.
+首先请阅读 `acore_soap-project <https://github.com/MacHu-GWU/acore_soap-project>`_ 的 README 的第一段来了解 acore soap 系列项目的背景.
+
+该项目提供了一个部署在游戏服务器 EC2 上的命令行程序, 作为外部 API 调用的桥梁. 使得外部有权限的开发者可以通过 AWS SSM Run Command 远程调用这个命令行程序, 从而实现远程执行 GM 命令.
+
+
+How to
+------------------------------------------------------------------------------
+1. 如果你想要在 EC2 上调试这个 Agent, 你可以参考 `tests_int/README.rst <https://github.com/MacHu-GWU/acore_soap_agent-project/blob/main/tests_int/README.rst>`_ 中的教程.
+
+2. 如果你在 EC2 上安装完 Agent 之后, 想要验证它是否能正常工作, 你可以用下面的命令测试. 如果看到一些例如 ``Server uptime: ...`` 的信息就表示成功了.
+
+.. code-block:: bash
+
+    /home/ubuntu/git_repos/acore_soap_agent-project/.venv/bin/acoresoapagent gm ".server info"
+
+3. 如果你想要利用这个 Agent 来远程执行 GM 命令, 请使用 `acore_soap_remote-project <https://github.com/MacHu-GWU/acore_soap_remote-project>`_ 这个工具.
 
 
 .. _install:

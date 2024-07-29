@@ -38,4 +38,7 @@ Pip install test dependencies::
 
 Run integration test::
 
+    /home/ubuntu/git_repos/acore_soap_agent-project/.venv/bin/acoresoapagent hello
+    /home/ubuntu/git_repos/acore_soap_agent-project/.venv/bin/acoresoapagent gm --help
     /home/ubuntu/git_repos/acore_soap_agent-project/.venv/bin/acoresoapagent gm --cmd ".server info"
+    /home/ubuntu/git_repos/acore_soap_agent-project/.venv/bin/acoresoapagent gm ".server info" --s3uri s3://bmt-app-dev-us-east-1-data/projects/acore_soap_agent/int_test/server-info.json
