@@ -5,6 +5,7 @@ Command line low lever implementations.
 """
 
 import typing as T
+import time
 
 from simple_aws_ec2.api import EC2MetadataCache
 from acore_soap.api import ensure_response_succeeded
@@ -21,6 +22,7 @@ def gm(
     password: T.Optional[str] = None,
     host: T.Optional[str] = None,
     port: T.Optional[int] = None,
+    delay: int = 100,
     raises: bool = True,
     s3_client: T.Optional["S3Client"] = None,
     output_s3uri: T.Optional[str] = None,
@@ -34,6 +36,7 @@ def gm(
     :param password: 默认的密码, 只有当 request.password 为 None 的时候才会用到.
     :param host: 默认的 host, 只有当 request.host 为 None 的时候才会用到.
     :param port: 默认的 port, 只有当 request.port 为 None 的时候才会用到.
+    :param delay: 在运行每个 GM 命令之间的延迟时间, 单位为毫秒
     :param raises: 默认为 True. 如果为 True, 则在遇到错误时抛出异常. 反之则将
         failed SOAP Response 原封不动地返回.
     :param s3_client: 可选参数, 用于将结果保存到 S3 中.
@@ -54,9 +57,12 @@ def gm(
         s3_client=s3_client,
     )
 
+    delay_ms = delay / 1000
     responses = list()
     for request in requests:
         response = request.send()
+        if delay:
+            time.sleep(delay_ms)
         ensure_response_succeeded(request, response, raises=raises)
         responses.append(response)
 

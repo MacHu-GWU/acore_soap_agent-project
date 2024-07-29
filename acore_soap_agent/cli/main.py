@@ -41,6 +41,7 @@ class Command:
         pwd: T.Optional[str] = None,
         host: T.Optional[str] = None,
         port: T.Optional[int] = None,
+        delay: int = 100,
         raises: bool = True,
         s3uri: T.Optional[str] = None,
     ):
@@ -63,6 +64,7 @@ class Command:
         :param pwd: in game GM account password, if not given, then use "admin"
         :param host: wow world server host, default "localhost"
         :param port: wow world server SOAP port, default 7878
+        :param delay: The delay between sending each GM command.
         :param raises: raise error if any of the GM command failed.
         :param s3uri: if None, then return the response as JSON, otherwise, save
             the response to S3.
@@ -73,6 +75,7 @@ class Command:
             password=pwd,
             host=host,
             port=port,
+            delay=delay,
             raises=raises,
             s3_client=None,
             output_s3uri=s3uri,
