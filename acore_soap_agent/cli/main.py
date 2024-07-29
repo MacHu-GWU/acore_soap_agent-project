@@ -9,6 +9,8 @@ See :class:`Command` for details.
 import typing as T
 import fire
 
+from .._version import __version__
+
 from .impl import (
     gm,
 )
@@ -24,7 +26,13 @@ class Command:
         """
         Print welcome message.
         """
-        print("Hello acore_soap_agent user!")
+        print(f"Hello acore_soap_agent {__version__} user!")
+
+    def version(self):
+        """
+        Print version number.
+        """
+        print(__version__)
 
     def gm(
         self,
